@@ -11,6 +11,10 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+
+Route::get('/notify-users', 'NotifyUsersController')->name('notify-users');

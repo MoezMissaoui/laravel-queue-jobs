@@ -92,6 +92,9 @@
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
+
+                    <a href="{{route('notify-users')}}">Notify Users</a>
+
                 </div>
             </div>
         </div>
