@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -12,16 +13,16 @@ class SendNotificationJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $user;
+    protected $users;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct()
     {
-        $this->user = $user;
+
     }
 
     /**
@@ -31,8 +32,11 @@ class SendNotificationJob implements ShouldQueue
      */
     public function handle()
     {
-        $this->user->update([
-            'notified' => true
-        ]);
+        $users = User::all();
+        foreach ($users as $user) {
+            $user->update([
+                'notified' => !$user->notified
+            ]);
+        }
     }
 }
