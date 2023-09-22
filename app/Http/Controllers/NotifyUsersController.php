@@ -14,7 +14,7 @@ class NotifyUsersController extends Controller
 
     function __invoke() 
     {
-        dispatch(new SendNotificationJob())->onQueue('notifications');
+        dispatch(new SendNotificationJob());
         return redirect()->back();
     }
 }
